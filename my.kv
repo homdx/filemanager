@@ -1,0 +1,38 @@
+
+#:import lv kivy.uix.listview
+#:import la kivy.adapters.listadapter
+
+
+<MyWidget>:
+    drives_list: drives_list
+    file_chooser: file_chooser
+
+    ListView:
+        id: drives_list
+        adapter:
+            la.ListAdapter(data=root.get_sys_drives(), selection_mode='single', allow_empty_selection=False, cls=lv.ListItemButton)
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y:None
+
+
+            Button:
+                text: "DELETE"
+
+            Button:
+                text: "COPY"
+
+            Button:
+                text: "PASTE"
+
+            Button:
+                text: "COMPRESS"
+
+            Button:
+                text: "DECOMPRESS"
+
+
+
+    FileChooserListView:
+        id: file_chooser
