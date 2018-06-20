@@ -7,32 +7,47 @@
     drives_list: drives_list
     file_chooser: file_chooser
 
+
     ListView:
         id: drives_list
         adapter:
             la.ListAdapter(data=root.get_sys_drives(), selection_mode='single', allow_empty_selection=False, cls=lv.ListItemButton)
 
         BoxLayout:
+
             orientation: "vertical"
-            size_hint_y:None
-
-
-            Button:
-                text: "DELETE"
+            size_hint_y: 0.3
 
             Button:
                 text: "COPY"
+                on_release: root.copy_file(file_chooser.path, file_chooser.selection)
+
+
 
             Button:
                 text: "PASTE"
+                on_press: root.get_selected_directory(file_chooser.path)
+                on_release: root.paste_file(file_chooser.path, file_chooser.selection)
+
+
+
 
             Button:
                 text: "COMPRESS"
+                on_release: root.compress_file(file_chooser.path, file_chooser.selection)
 
             Button:
                 text: "DECOMPRESS"
+                on_release: root.decompress_file(file_chooser.path, file_chooser.selection)
+
+            Button:
+
+                text: "DELETE"
+                on_release: root.delete_file(file_chooser.path, file_chooser.selection)
 
 
 
     FileChooserListView:
         id: file_chooser
+        on_selection: root.get_selected_file(file_chooser.path, file_chooser.selection)
+
