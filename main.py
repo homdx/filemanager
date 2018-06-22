@@ -84,7 +84,7 @@ class MyWidget(BoxLayout):
         sfile = self.get_selected_file(path, filename)
         print(sfile)
         if os.path.isdir(sfile):
-            shutil.rmtree(sfile)                                                 #it finally works #delete the matching  item
+            shutil.rmtree(sfile)                                                 
             self.finish_popup("Deletion Operation")
 
             print('Folder Deleted!!')
