@@ -15,7 +15,7 @@
         BoxLayout:
 
             orientation: "vertical"
-            size_hint_y: 0.3
+            size_hint_y: 0.4
 
             Button:
                 text: "COPY"
@@ -43,12 +43,16 @@
 
                 text: "DELETE"
                 on_release: root.delete_file(file_chooser.path, file_chooser.selection)
+            Button:
+
+                text: "QUIT"
+                on_release: app.stop()
 
 
 
 
 
-    FileChooserIconView:
+    FileChooserListView:
         id: file_chooser
         on_selection: root.get_selected_file(file_chooser.path, file_chooser.selection)
         dirselect: True
@@ -59,5 +63,5 @@
         Label:
             text: "Operation Completed!!"
         Button:
-            text: "Cancel"
+            text: "Done"
             on_release: root.cancel()
